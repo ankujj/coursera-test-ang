@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>String Manipulation App</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
+	<script src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="app.css">
+</head>
+
+<body ng-App="StringUtil">
+	<h1>String Manipluation App</h1>
+	
+	<div ng-controller="StringUtilController">
+	
+	<input type="textarea" ng-model="itemlist" ng-focus="clearMessage();"><br/>
+	<span><small>Note: We do not consider and empty item, i.e., , , as an item towards to the count</small></span><br/>
+	<span class={{messageClass}}>{{outMessage}}</span><br/><br/>
+	<input type="button" ng-click="CheckIfTooMuch();" value="Check If Too Much">
+	
+	</div>
+</body>
+</html>
