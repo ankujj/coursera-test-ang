@@ -22,7 +22,7 @@
 			$scope.outMessage = "Please enter data first";
 			$scope.messageClass="red";
 		}else{
-			var arrayOfStrings =  $scope.itemlist.split(",").filter(function(x){return x.length>0});
+			var arrayOfStrings =  $scope.itemlist.split(",").filter(function(x){return x.trim().length>0});
 			if(arrayOfStrings.length >0 ){
 
 				if(arrayOfStrings.length>3){
