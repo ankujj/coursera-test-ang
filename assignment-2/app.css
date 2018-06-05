@@ -1,0 +1,21 @@
+.List {
+
+	border:1px;
+	background-color: #ffffff;
+	border-style:solid;
+	border-color: #f2f2f2
+
+}
+
+
+
+.info-message{
+
+	color:red;
+
+}
+
+div {
+
+	display:block
+}

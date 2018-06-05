@@ -48,11 +48,12 @@
 		var shoppingList = this;
 
 		shoppingList.items = ShoppingListService.getItems();
+		shoppingList.buyCount = ShoppingListService.getBuyCount();
 
 		shoppingList.buyItem = function(itemIndex){
 			
+			shoppingList.buyCount=ShoppingListService.incrementer(shoppingList.buyCount);
 			ShoppedListService.addItem(ShoppingListService.getItemAtIndex(itemIndex));
-
 		};
 
 		shoppingList.add = function(){
@@ -79,7 +80,7 @@
 
 		this.defaults = {
 			itemList:[]
-		}		
+		};		
 
 		this.$get = function(){
 
@@ -91,6 +92,7 @@
 	function ShoppingListService(itemList){
 
 		var items = itemList || [];
+		var buyCount = 0;
 		
 		this.addItem = function(item){
 			items.push(item);
@@ -98,18 +100,25 @@
 
 		this.getItemAtIndex = function(itemIndex){
 			return items[itemIndex];
-		}
+		};
 
 		this.removeItem = function(itemIndex){
 			items.splice(itemIndex,1);
-		}
+		};
 
 		this.getItems = function(){
 
 			return items;
-		}
+		};
 
+		this.incrementer = function(value){
+			value+=1;
+			return value;
+		};
 		
+		this.getBuyCount = function(){
+			return buyCount;
+		}
 		
 	}
 

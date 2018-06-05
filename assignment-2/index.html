@@ -1,54 +1,85 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 
-<html ng-App="ShoppingListApp">
-<head>
-	<meta charset="utf-8">
-	<title>ShoppingList Application</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
-	<script src="app.js"></script>
-	<link rel="stylesheet" type="text/css" href="app.css">
-</head>
-
-<body >
-	<h1>Welcome to ShoppingList Application</h1>
-
-
-	
-	<div id="shoppingList" ng-controller="ShoppingListController as shoppingList">
-		<h3>Add items to your shopping cart</h3>
-		<strong>Item Name:</strong> <input type="text" ng-model="shoppingList.newItem" placeholder="Item Name">
-		<strong>Item Quantity: </strong><input type="text" ng-model="shoppingList.newQuantity" placeholder="Item Quantity">
-		<button ng-click="shoppingList.add()">Add</button>
-
-		<h4> List of Items to be Bought</h4>
-		<ul>
-
-			<li ng-repeat="item in shoppingList.items">
-			<input type="checkbox" ng-click="shoppingList.buyItem($index)" ng-model="item.bought" ng-disabled="item.bought">
-			<span ng-if="!item.bought">
-			Buy {{item.quantity}} {{item.name}} 
-			</span>
-			<span ng-if="item.bought">
-			<del>Buy {{item.quantity}} {{item.name}} </del>
-			</span>
-			<!--<button ng-click="shoppingList.buyItem($index)">Bought</button> -->
-			
-			</li>
-		</ul>
-
-	</div>
-	
-
-	<div id="shoppedList" ng-controller="ShoppedListController as ShoppedList">
-
-		<h4>List of items Bought</h4>
-		<ol>
-			<li ng-repeat="item in ShoppedList.items">
-			Bought {{item.quantity}} {{item.name}}
-			</li>
-		</ol>
-
+	<html ng-App="ShoppingListApp">	
+	<head>
+		<meta charset="utf-8">
+		<title>ShoppingList Application</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="app.js"></script>
+		<link rel="stylesheet" type="text/css" href="app.css">
 		
-	</div>
-</body>
+	</head>
+
+	<body>
+		<div class="container">
+			<h2 align="center">Welcome to ShoppingList Application</h2>
+
+			<div class="row">
+				<div class="col-md-7 col-lg-7 List">
+		
+					<div ng-controller="ShoppingListController as shoppingList">
+						<h3>Add items to your shopping cart</h3>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="text" ng-model="shoppingList.newItem" placeholder="Item Name">
+							</div>
+							<div class="col-md-4">
+								<input type="text" ng-model="shoppingList.newQuantity" placeholder="Item Quantity">
+							</div>
+							<div class="col-md-4">
+								<button ng-click="shoppingList.add()">Add</button>
+							</div>
+						</div>
+
+						<h3>To Buy:</h3>
+
+						<ul>
+				
+							<li ng-repeat="item in shoppingList.items">
+								<input type="checkbox" ng-click="shoppingList.buyItem($index)" ng-model="item.bought" ng-disabled="item.bought">
+								<span ng-if="!item.bought">
+									Buy {{item.quantity}} {{item.name}} 
+								</span>
+								<span ng-if="item.bought">
+									<del>Buy {{item.quantity}} {{item.name}} </del>
+								</span>
+							<!--<button ng-click="shoppingList.buyItem($index)">Bought</button> -->
+
+				
+							</li>
+					</ul>
+
+					<p class="info-message" ng-hide="shoppingList.items.length != shoppingList.buyCount">
+						Everything is Bought
+					</p>
+
+				</div>
+			</div>
+
+			<div class="col-md-1 col-lg-1">
+			</div>
+
+				<div class="col-md-4 col-lg-4 List">
+					<h3>Already Bought:</h3>
+					<div  ng-controller="ShoppedListController as ShoppedList">
+
+						
+						<p class="info-message" ng-hide="ShoppedList.items.length">
+							Nothing is Bought
+						</p>
+						<ol>
+							<li ng-repeat="item in ShoppedList.items">
+								Bought {{item.quantity}} {{item.name}}
+							</li>
+						</ol>
+
+			
+					</div> <!-- controller div -->
+	  			</div> <!-- col div-->
+	  		</div> <!-- row div -->
+		</div>
+	</body>
 </html>
