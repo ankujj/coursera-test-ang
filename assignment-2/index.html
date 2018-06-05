@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html ng-App="ShoppingListApp">
+<head>
+	<meta charset="utf-8">
+	<title>ShoppingList Application</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
+	<script src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="app.css">
+</head>
+
+<body >
+	<h1>Welcome to ShoppingList Application</h1>
+
+
+	
+	<div id="shoppingList" ng-controller="ShoppingListController as shoppingList">
+		<h3>Add items to your shopping cart</h3>
+		<strong>Item Name:</strong> <input type="text" ng-model="shoppingList.newItem" placeholder="Item Name">
+		<strong>Item Quantity: </strong><input type="text" ng-model="shoppingList.newQuantity" placeholder="Item Quantity">
+		<button ng-click="shoppingList.add()">Add</button>
+
+		<h4> List of Items to be Bought</h4>
+		<ul>
+
+			<li ng-repeat="item in shoppingList.items">
+			<input type="checkbox" ng-click="shoppingList.buyItem($index)" ng-model="item.bought" ng-disabled="item.bought">
+			<span ng-if="!item.bought">
+			Buy {{item.quantity}} {{item.name}} 
+			</span>
+			<span ng-if="item.bought">
+			<del>Buy {{item.quantity}} {{item.name}} </del>
+			</span>
+			<!--<button ng-click="shoppingList.buyItem($index)">Bought</button> -->
+			
+			</li>
+		</ul>
+
+	</div>
+	
+
+	<div id="shoppedList" ng-controller="ShoppedListController as ShoppedList">
+
+		<h4>List of items Bought</h4>
+		<ol>
+			<li ng-repeat="item in ShoppedList.items">
+			Bought {{item.quantity}} {{item.name}}
+			</li>
+		</ol>
+
+		
+	</div>
+</body>
+</html>
