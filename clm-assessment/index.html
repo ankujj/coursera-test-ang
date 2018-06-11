@@ -1,0 +1,312 @@
+	<!DOCTYPE html>
+
+	<html ng-App="QuestionnaireApp">	
+	<head>
+		<meta charset="utf-8">
+		<title>Questionnaire</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!--
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  	-->
+		<script src="app.js"></script>
+		<link rel="stylesheet" type="text/css" href="app.css">
+		
+	</head>
+
+	<body>
+		<div class="container">
+
+			<h4 align="center">Pega CLM based OnBoarding Assessment</h4>
+
+
+			<div ng-controller="QuestionnaireController as questionnaire">
+				<!--
+			<div ng-hide="questionnaire.Dialogues.length">
+			 	<p><strong>Load the Transcript:</strong></p>
+			 	<input type="file" on-read-file="questionnaire.getContent($fileContent)" />
+			</div>
+				-->
+			<!--<div ng-show="questionnaire.Dialogues.length >0 && questionnaire.index+1<=questionnaire.Dialogues.length"> -->
+
+			<!--- Questions --->
+			<div ng-show="questionnaire.index <= 8" class="row List">
+				<div class="col-md-1">
+					<strong>Prospect:</strong>
+				</div>
+				<div class="col-md-11">
+				<!-- {{questionnaire.Dialogues[questionnaire.index].Question}} -->
+				<div ng-switch="questionnaire.index">
+					<div ng-switch-when="0">
+						Hi Mr. Sales, We want to modernize our Client and Product OnBoarding Platforms using Pega.
+						I was wondering if you could offer us any advise on how to go about it
+					</div>			
+					<div ng-switch-when="1">
+						Wow! That's great. Would you be able to provide me details about how that's possible
+					</div>
+					<div ng-switch-when="2">
+						Nice!! Please give me a brief description about the Pega Onboarding Framework and what kind of features shall I get from its usage
+					</div>
+					<div ng-switch-when="3">
+						Cool!!  It sounds great. The only thing I am not sure is about reusing your integration capabilities since we already have integrations built in the system that we want to reuse.
+
+						To help us make a decision on using CLM framework, can you explain in brief about the individual frameworks contained within the Pega CLM framework.
+
+					</div>
+					<div ng-switch-when="4">
+						<article>
+						  The KYC capabilities offered by the Framework sound wonderful. However, we already have KYC rules defined and risk scoring algorithms developed by our Business teams. We would like to leverage the existing KYC framework built by our Bank for our country. If we were a new Bank with no Prior Business experience then your KYC framework would have helped us a lot to quickly launch ourselves in the market. 
+						</article>
+						<article>
+							But if we use your KYC framework which I am sure is great and very well designed, our Business would need to review all the KYC rules from the framework and revise them to fit the bank and country standards. 	
+						</article>
+						<article>
+							Moreover, we would rather take a hit on technology than on functionality since KYC is a regulatory requirement.	
+						</article>
+						
+
+					</div>
+					<div ng-switch-when="5">
+						<article>
+							I believe we would love it. But as I said we are an established bank already so we would like to reuse our already defined Product Catalogue rather than redesign it again in Pega.
+						</article>
+						<article>
+							May be we can review this further but I am sure that would require a learning curve for our Business. 
+						</article>
+						
+					</div>
+					<div ng-switch-when="6">
+						<article>
+							The Requirements framework sounds interesting and would be very valuable for mortgage applications.
+						</article>
+						<article>
+							However, some countries already have FileNet systems where you can define rules for document applicability depending on the stage in which your application is. You just need to click on a link and system directs you to the FileNet application where you can upload documents.
+						</article>
+						
+						<article>
+							This link and some integration protocol can be provided from Pega but rest of the functionality is defined in the Filenet application. This central application is used by other systems as well.
+						</article>
+						 
+						<article>
+							Also, I would need to consult my technical team about the number of cases that are created. As you know some applications may have a huge number of documents. My technical team would also let me know if having this framework substantially reduces their workload.
+						</article>
+						
+					</div>
+					<div ng-switch-when="7">
+
+						<article>
+							I have had a look at the UI and I can say for sure it is excellent. We could definitely borrow from it.
+						</article>
+						 
+						<article>
+							I forgot to mention that we have something called the TOM Model (The operating model) which defines the stages and the steps in each of these stages to be followed by all our LATAM countries. The stages include Capture Information, Negotiation (Product Simulations), Adjudication calls, Verification, Fullfillment etc. The adjudication calls are really important as they let us present the right Products to the Client and also guide us as to whether Client is good for a chosen product or not.
+						</article>
+						 
+						<article>
+							As you mentioned your CLM framework does not have this Negotiation and Adjudication stages so I reckon we would need to customize the customer journey accordingly.
+						</article>
+						 
+
+					</div>
+					<div ng-switch-when="8">
+						
+						Thanks a lot for all the information provided. This information would definitely help us formulate our opinion about the use of Pega CLM framework for our needs.
+
+					</div>
+					
+				</div> <!-- End of Switch -->
+
+				</div> <!-- End of col -->
+			 </div> <!-- End of Questions  -->
+
+			<!-- Answers --->
+			<div ng-show="questionnaire.index <= 8" class="row List">
+				<div class="col-md-1">
+					<strong>Sales:</strong> 
+				</div>
+				<div class="col-md-11">
+				 	<!--{{questionnaire.Dialogues[questionnaire.index].Answer}} -->
+				 	<div ng-switch="questionnaire.index">
+				 	<div ng-switch-when="0">
+				 	Well, you have come to the right person. We at Pega have all the tools you would need to modernize your Systems and that too in record time.
+				 	</div>
+					
+					<div ng-switch-when="1">
+				 		Sure, We have CLM(Client LifeCycle Management) Framework in Pega that can help you with your needs.
+				 		The CLM framework is layered on top of the following frameworks
+				 		<ol>
+				 			<li>Pega OnBoarding for Financial Services</li>
+				 			<ul>
+				 				<li>Pega Product Designer: which can help you design your product catalogues</li>
+				 				<ul>
+				 					<li>Pega Foundation for financial Services</li>
+				 					<ul>
+				 						<li>Pega Requirements: which can be used to manage your requirements such as Documents and Verification tasks</li>
+				 						<li>Pega Accounting</li>
+				 					</ul>
+				 				</ul>
+				 			</ul>
+				 			<li> Pega Know Your Customer For Financial Services: which takes care of the KYC, AML, CRS, FATCA needs</li>
+				 		</ol>
+					</div>
+					<div ng-switch-when="2">
+					<section>
+				 		Pega CLM combined with Pega OBFS shall provide you with a predefined Customer Journey  depending on the customer type (Corporate/Retail). It takes the application through stages such as Capture details (Pre-defined Customer search and data collection screens), Enrich Data for Due Diligence, Due Diligence and Fulfillment where your product cases shall be created and you can define a flow for Product Configuration.
+				 	</section>
+				 	<section>
+				 		You also get Integration capabilities with Equifax and other third party service provides such as Markit.
+				 	</section>	
+				 		
+				 	<section>
+				 		<a href="https://community.pega.com/system/files/pdfs/pega-client-lifecycle-management-731-product-overview.pdf" target="_blank">You can find more details here</a>
+				 	</section>
+				 					 	
+				 	</div>
+
+				 	<div ng-switch-when="3">
+					<section>
+				 		Sure, the Due Diligience related functionality is provided by the Pega KYC framework. The KYC rules are carefully designed by lawyers, ex-regulators, policy makers and business experts. They  are updated on a quarterly basis. It uses data such as Jurisdiction, customer type, product etc to arrive at the right KYC types at the right time. It provides dynamic risk rating through scorecards that calculate risk scores and agility to quickly manage rule changes.
+				 	</section>
+				 	<section>
+				 		<a href="https://community.pega.com/system/files/pdfs/pega-know-your-customer-for-financial-services-731-product-overview.pdf" target="_blank">You can find more details here</a>
+				 	</section>
+				 		
+				 	</div>
+
+				 	<div ng-switch-when="4">
+					<section>
+				 		You do have a valid point. But how about our Product Designer which lets you design your Product Catalogue. I am sure you would love it.
+				 	</section>
+
+				 	</div>
+
+				 	<div ng-switch-when="5">
+					<section>
+				 		Ya please review about the Product Designer with your team. Also don't forget the amazing capability of generating document-centric and complex process-centric tasks at runtime using our Pega Requirements Framework. This could be extremely useful especially for mortgage applications.
+				 	</section>
+				 	<section>
+				 		You can define your document library and configure document storage in Pega OR a Content Management system such as Alfresco or Filenet using CMIS standards. You can define validation screens and rules for validating each document. The system creates Requirement Cases for each applicable Requirement which are routed to the appropriate teams and are linked to the appropriate stage in the application. The documents could be User Provided, Third Party provided or generated from within the applcation using Pega eForm rules.
+				 	</section>
+				 		
+				 	<section>
+				 		<a href="https://community.pega.com/system/files/pdfs/pega-foundation-financial-services-732-requirements-guide.pdf" target="_blank">You can find more details here</a>
+				 	</section>
+				 		
+				 	<section>
+				 		<a href="https://community.pega.com/system/files/pdfs/pega-foundation-financial-services-732-requirements-guide.pdf" target="_blank">Also visit this link for more information on Financial Services Product Overview</a>
+				 	</section>
+
+
+				 	</div>
+
+				 	<div ng-switch-when="6">
+					<section>
+				 		I understand your points. Your bank is already in business since many years and would like to reuse the assets it has built over the time. However, do give a thought to all the wonderful OOTB screens shipped with the framework which can provide an amazing user experience. The UI would be responsive so that it displays well on all device types. The UI could guide the user about the where the application is, about the steps pending in that stage and other pending actions or data requirements outstanding  for the completition of the applicarion ina single screen making it a really engaging user experience. There are many OOTB reports, charts etc that can be leveraged to improve throughput and productivity.
+				 	</section>
+
+				 	</div>
+
+				 	<div ng-switch-when="7">
+					<section>
+				 		Yep, you would need to do that kind of customization.
+				 	</section>
+
+				 	</div>
+				 	<div ng-switch-when="8">
+					<section>
+				 		You are most welcome. If you need any more information please feel free to contact me.
+				 	</section>
+
+				 	</div>
+				</div> <!-- End of Switch -->
+			</div> <!-- End of col  -->
+		</div> <!-- End of Answers -->
+				
+			<!-- Summary -->
+			
+			<div ng-show="questionnaire.index == 9" class="row List">
+						
+						<h4>Summary of my thoughts based on the conservation I had</h4>
+						<ul>
+							<li>
+								I don't think we would be making use of all the capabilities offered by Pega CLM given that we are only modernizing our existing system and not building our Bank Onboarding from scratch.I am certain we would not be making use of the Product Designer and KYC frameworks.
+							</li>
+							<li>
+								Using the framework properly would definitely require a learning curve for our technical/Testing and Business teams. Business would definitely need to understand all the features of the framework thoroughly. The Requirements then would be more of filling in the Gaps or the functionality not provided by the framework. It is too early to know how big these Gaps could be.
+								Also my past experience has taught me that when adequate efforts to learn the framework are not put by the Business and Technical teams then the framework just becomes a burden that we carry. The built application ends up not using many of the features provided by the framework.
+								In some instances the framework could straightjacket us and due to that we end up not using features provided by the framework. 
+
+							</li>
+							<li>
+								What if there are issues found in the framework. It would definitely take longer time to resolve such issues as that may require us to raise an SR and then follow it up with the Pega team.
+							</li>
+							<li>
+								It should also be considered that for building a generic framework such as CLM, Pega might have done some over-engineering which may affect the memory foot print of my application
+							</li>
+							<li>
+								To adhere to TOM Model we would need to make many customizations. The complexity of interfacing with OMDM and deciding the application path still needs to handled.
+								Product Configuration and Negotiation flows where the application would spend maximum amount of its time would still need to be developed.
+								Consuming and configuring service mappings would still need to be done.
+								Etc Etc
+							</li>
+							<li>
+								Developers would need to thoroughly understand the framework Data Model and comply with that. Sometimes creating a new data model might be easier.
+							</li>
+							<li>
+								No doubt the framework is good, the framework would guide me on Case Design and class structure to some extent. Requirements feature is appealing but the number of cases created and existence of already built Content Management Systems needs to be factored in.
+								The User Experience is indeed excellent; especially the Dashboard and the Review/Confirm Harnesses. 
+
+								So there are definitely some very appealing and exciting features. But does that warrant the use of this FrameWork ???
+							</li>
+							<li>
+								As an alternative, may be we can work on the eIAP framework which is already aligned with the TOM Model to some extent. Too bad that  we did not work on lending extensively else it would have completely aligned with the TOM Model.
+
+								Further we can work on the following items in eIAFW
+								<ol>
+									<li>
+										Introduce a Customer Interview to better assess his needs
+									</li>
+									<li>
+										Make improvements to the UI design and test it on Tabs and Mobiles
+									</li>
+									<li>
+										Make more skeleton rules, stages and steps to serve as a guide for future development
+									</li>
+									<li>
+										Have Brainstorming sessions and incorporate more ideas and feedback 
+									</li>
+								</ol>
+							</li>
+
+						</ul>
+
+					</div>	<!-- End of Summary -->
+					
+			<!-- End Screen -->
+
+			<div ng-show="questionnaire.index == 10" class="row List">
+				
+				<h2 align="center">Thank You for your Patience !! </h2>
+					
+			</div>
+
+			<!-- Footer -->
+
+			<div ng-show="questionnaire.index <= 10" class="row Button-Area">
+				
+					<button ng-click="questionnaire.previous()" class="pull-left btn">Previous</button>			
+					<button ng-show="questionnaire.index <= 9" ng-click="questionnaire.next()" class="pull-right btn btn-danger">Next</button>	
+			</div>
+			<!--</div> -->
+			<!--
+			<div ng-show="questionnaire.index+1>questionnaire.Dialogues.length">
+				<h2 align="center" style="margin:150px">Thank you for your patience !!</h2>
+			</div>
+			-->
+		</div> <!-- End of Controller -->
+	</div> <!-- End of Container -->
+			
+
+	</body>
+</html>
